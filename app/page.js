@@ -194,7 +194,7 @@ export default function Home() {
   const header = (
     <div style={{ marginBottom: 10 }}>
       <div style={{ width: "100%", height: 180, overflow: "hidden" }}>
-        <img src="/logo.png" style={{ width: "100%", height: "100%", objectFit: "cover" }} />
+        <img src="/logo.png" style={{ width: "100%", height: "100%", objectFit: "contain", background: "#fff" }} />
       </div>
     </div>
   );
