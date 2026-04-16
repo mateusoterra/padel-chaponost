@@ -124,10 +124,10 @@ export default function Home() {
     const selectedIds = selecionados.map(p => p.uid);
 
     await updateDoc(doc(db, "games", game.id), {
-      status: "closed",
+      status: "ready",
       selected: selectedIds
     });
-    setView("history");
+    //setView("history");
   };
 
   const confirmGame = async (game) => {
@@ -269,7 +269,7 @@ if (view === "join") {
     <div style={styles.container}>
       {header}
       <div style={styles.content}>
-        {games.filter(g => g.status === "open").map(game => {
+        {games.filter(g => g.status === "open" || g.status === "ready").map(game => {
           const isIn = game.participants.includes(user.uid);
 
           return (
@@ -321,7 +321,7 @@ if (view === "join") {
                 <button style={styles.button} onClick={() => generateMatch(game)}>🎯 Définir joueurs</button>
               )}
 
-              {game.status === "closed" && (
+              {game.status === "ready" && (
                 <>
                   <button style={styles.button} onClick={() => confirmGame(game)}>✅ Match joué</button>
                   <button style={styles.dangerButton} onClick={() => cancelGame(game)}>❌ Annuler match</button>
